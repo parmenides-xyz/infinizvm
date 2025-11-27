@@ -1,0 +1,22 @@
+.PHONY: all check clean
+
+all: build
+
+check: fmt test clippy
+
+test:
+	./scripts/genesis.sh storage/data
+	(command -v cargo-nextest && cargo nextest run --all-features --workspace) || cargo test --all-features --workspace
+
+fmt:
+	cargo fmt --all -- --check
+
+clippy:
+	cargo clippy --workspace --all-targets --tests -- -D warnings
+
+clean:
+	cargo clean
+
+build:
+	cargo build --release
+

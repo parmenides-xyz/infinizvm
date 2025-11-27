@@ -1,0 +1,29 @@
+[package]
+name = "igloo-executor"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+igloo-storage = { workspace = true }
+igloo-verifier = { workspace = true }
+tempfile = { workspace = true }
+
+thiserror = { workspace = true }
+tokio = { workspace = true }
+log = { workspace = true }
+crossbeam-channel = { workspace = true }
+async-trait = { workspace = true }
+
+solana-ledger = { workspace = true }
+solana-accounts-db = { workspace = true }
+solana-sdk = { workspace = true }
+solana-svm = { workspace = true }
+solana-runtime = { workspace = true, features = ["dev-context-only-utils"] }
+solana-core = { workspace = true }
+
+[dev-dependencies]
+anyhow = { workspace = true }

@@ -1,61 +1,72 @@
 use crate::l1::{block::L1BlockInfoImpl, head::L1HeadImpl, tx::DepositTx};
-use solana_sdk::pubkey::Pubkey;
+use chrono::Utc;
+use solana_sdk::{signature::Keypair, signer::Signer};
 use tokio::sync::mpsc::Sender;
 
-pub struct ZcashLayer1 {
-    rpc_url: String,
+pub struct MockLayer1 {
     sender: Sender<L1BlockInfoImpl>,
+    start_height: u64,
 }
 
-impl ZcashLayer1 {
-    pub fn new(rpc_url: String, sender: Sender<L1BlockInfoImpl>) -> Self {
-        Self { rpc_url, sender }
+impl MockLayer1 {
+    pub fn new(start_height: u64, sender: Sender<L1BlockInfoImpl>) -> Self {
+        Self {
+            sender,
+            start_height,
+        }
     }
 
     pub fn run(&mut self) {
         let sender = self.sender.clone();
-        let rpc_url = self.rpc_url.clone();
+        let start = self.start_height;
 
         tokio::spawn(async move {
-            let client = reqwest::Client::new();
-            let mut last_height = 0u64;
-
+            let mut height = start;
             loop {
-                if let Ok(block) = Self::fetch_block(&client, &rpc_url, &mut last_height).await {
-                    let _ = sender.send(block).await;
+                height += 1;
+
+                if let Err(e) = sender.send(Self::generate_block(height)).await {
+                    error!("Error sending block: {}", e);
                 }
-                tokio::time::sleep(std::time::Duration::from_secs(10)).await;
+
+                tokio::time::sleep(std::time::Duration::from_secs(12)).await;
             }
         });
     }
 
-    async fn fetch_block(client: &reqwest::Client, url: &str, last: &mut u64) -> anyhow::Result<L1BlockInfoImpl> {
-        let count: serde_json::Value = client.post(url)
-            .json(&serde_json::json!({"jsonrpc":"2.0","method":"getblockcount","params":[],"id":1}))
-            .send().await?.json().await?;
-
-        let height = count["result"].as_u64().ok_or(anyhow::anyhow!("no height"))?;
-        if height <= *last { return Err(anyhow::anyhow!("no new block")); }
-        *last = height;
-
-        let hash_resp: serde_json::Value = client.post(url)
-            .json(&serde_json::json!({"jsonrpc":"2.0","method":"getblockhash","params":[height],"id":1}))
-            .send().await?.json().await?;
-
-        let hash_hex = hash_resp["result"].as_str().ok_or(anyhow::anyhow!("no hash"))?;
-        let mut hash = [0u8; 32];
-        hex::decode_to_slice(hash_hex, &mut hash).ok();
-
-        let block: serde_json::Value = client.post(url)
-            .json(&serde_json::json!({"jsonrpc":"2.0","method":"getblock","params":[hash_hex, 1],"id":1}))
-            .send().await?.json().await?;
-
-        let timestamp = block["result"]["time"].as_u64().unwrap_or(0);
-
-        Ok(L1BlockInfoImpl {
-            l1_head: L1HeadImpl { hash, height, timestamp },
-            deposit_txs: vec![],
+    fn generate_block(height: u64) -> L1BlockInfoImpl {
+        L1BlockInfoImpl {
+            l1_head: Self::random_head(height),
             batch: None,
-        })
+            deposit_txs: Self::random_deposit_txs(),
+        }
+    }
+
+    fn random_head(height: u64) -> L1HeadImpl {
+        L1HeadImpl {
+            height,
+            hash: Default::default(),
+            timestamp: Utc::now().timestamp() as u64,
+        }
+    }
+
+    fn random_deposit_txs() -> Vec<DepositTx> {
+        let rand_count = rand::random::<u64>() % 10;
+        let mut rtn = vec![];
+        for _ in 0..rand_count {
+            rtn.push(Self::random_deposit_tx());
+        }
+        rtn
+    }
+
+    fn random_deposit_tx() -> DepositTx {
+        let from_kp = Keypair::new();
+        let to_kp = Keypair::new();
+        DepositTx {
+            from: from_kp.pubkey(),
+            to: to_kp.pubkey(),
+            amount: rand::random::<u64>() % 100,
+            calldata: vec![],
+        }
     }
 }

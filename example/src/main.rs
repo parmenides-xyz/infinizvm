@@ -2,7 +2,7 @@ use anyhow::Result;
 use derive::{da::DaDeriveImpl, instant::InstantDeriveImpl};
 use igloo_interface::{l2::Engine, runner::Runner};
 use l2::batcher::Batcher;
-use zcash::{chain::ZcashLayer1, stream::TxServer};
+use mock::{chain::MockLayer1, stream::TxServer};
 use runner::SimpleRunner;
 use std::path::Path;
 use tokio::sync::mpsc::channel;
@@ -10,7 +10,7 @@ use tokio::sync::mpsc::channel;
 mod derive;
 mod l1;
 mod l2;
-mod zcash;
+mod mock;
 mod runner;
 
 #[macro_use]
@@ -32,7 +32,7 @@ async fn main() -> Result<()> {
     runner.register_instant(instanct_driver);
     runner.register_da(da_driver.clone());
 
-    ZcashLayer1::new("https://go.getblock.io/9c247421f0db418ab9ed13ee41ba89e9".to_string(), instant_sender).run();
+    MockLayer1::new(1000, instant_sender).run();
     TxServer::new(runner.get_engine().stream().clone()).run();
     Batcher::new(da_sender).run(attribute_receiver);
     da_driver.run(da_receiver);

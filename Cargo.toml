@@ -19,9 +19,9 @@ resolver = "2"
 
 [workspace.package]
 version = "0.1.0"
-authors = ["Soon Labs <maintainers@soon.foundation>"]
-repository = "https://github.com/soonlabs/soon"
-homepage = "https://www.soo.network/"
+authors = ["parmenides-xyz"]
+repository = "https://github.com/parmenides-xyz/infinizvm"
+homepage = "https://github.com/parmenides-xyz/infinizvm"
 license = "Apache-2.0"
 edition = "2021"
 

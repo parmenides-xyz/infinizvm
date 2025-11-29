@@ -112,14 +112,14 @@ spl-pod = "=0.3.0"
 reqwest = { version = "0.11", features = ["json"] }
 
 # member crate
-igloo-interface = { path = "interface" }
-igloo-storage = { path = "storage" }
-igloo-verifier = { path = "verifier" }
-igloo-executor = { path = "executor" }
-igloo-rpc = { path = "rpc" }
+infinizvm-interface = { path = "interface" }
+infinizvm-storage = { path = "storage" }
+infinizvm-verifier = { path = "verifier" }
+infinizvm-executor = { path = "executor" }
+infinizvm-rpc = { path = "rpc" }
 svm-executor = { path = "svm/executor" }
 solana-prio-graph-scheduler = { path = "prio-graph-scheduler" }
-igloo-schduler = { path = "scheduler" }
+infinizvm-scheduler = { path = "scheduler" }
 
 [patch.crates-io]
 #crossbeam-epoch = { git = "https://github.com/anza-xyz/crossbeam", rev = "fd279d707025f0e60951e429bf778b4813d1b6bf" } // Patch `crossbeam-epoch v0.9.5 was not used in the crate graph

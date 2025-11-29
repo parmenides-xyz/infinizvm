@@ -10,7 +10,7 @@ on:
 
 jobs:
   Test:
-    runs-on: soon-runtime-spot
+    runs-on: ubuntu-latest
     permissions:
       id-token: write   # This is required for requesting the JWT
       contents: read    # This is required for actions/checkout
@@ -45,7 +45,7 @@ jobs:
       - name: Install Protoc
         uses: arduino/setup-protoc@v3
         with:
-          repo-token: ${{ secrets.SOON_GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Cache cargo registry
         uses: actions/cache@v2
         with:

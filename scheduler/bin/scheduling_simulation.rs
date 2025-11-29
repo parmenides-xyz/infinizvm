@@ -1,15 +1,15 @@
 use crossbeam_channel::{unbounded, Receiver, Sender};
-use igloo_executor::processor::TransactionProcessor;
-use igloo_scheduler::id_generator::IdGenerator;
-use igloo_scheduler::impls::prio_graph_scheduler::PrioGraphSchedulerWrapper;
-use igloo_scheduler::scheduler::Scheduler;
-use igloo_scheduler::scheduler_messages::{MaxAge, SchedulingBatch, SchedulingBatchResult};
-use igloo_scheduler::status_slicing::{
+use infinizvm_executor::processor::TransactionProcessor;
+use infinizvm_scheduler::id_generator::IdGenerator;
+use infinizvm_scheduler::impls::prio_graph_scheduler::PrioGraphSchedulerWrapper;
+use infinizvm_scheduler::scheduler::Scheduler;
+use infinizvm_scheduler::scheduler_messages::{MaxAge, SchedulingBatch, SchedulingBatchResult};
+use infinizvm_scheduler::status_slicing::{
     calculate_thread_load_summary, SvmWorkerSlicingStatus, WorkerStatusUpdate,
 };
-use igloo_scheduler::stopwatch::StopWatch;
-use igloo_storage::{config::GlobalConfig, RollupStorage};
-use igloo_verifier::settings::{Settings, Switchs};
+use infinizvm_scheduler::stopwatch::StopWatch;
+use infinizvm_storage::{config::GlobalConfig, RollupStorage};
+use infinizvm_verifier::settings::{Settings, Switchs};
 use itertools::Itertools;
 use solana_program::hash::Hash;
 use solana_sdk::account::AccountSharedData;

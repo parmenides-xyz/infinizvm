@@ -3,7 +3,7 @@ use {
         env::{DEPLOYMENT_EPOCH, DEPLOYMENT_SLOT},
         error::Error,
     },
-    igloo_interface::l2::{
+    infinizvm_interface::l2::{
         bank::{BankInfo, BankOperations},
         executor::{Config, Init},
     },

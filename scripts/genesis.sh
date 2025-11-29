@@ -28,7 +28,7 @@ export RUST_BACKTRACE=1
 dataDir=$BASE_DIR/"$(basename "$0" .sh)"
 ledgerDir=$BASE_DIR/ledger
 
-igloo_RUN_SH_CLUSTER_TYPE=${igloo_RUN_SH_CLUSTER_TYPE:-development}
+INFINIZVM_RUN_SH_CLUSTER_TYPE=${INFINIZVM_RUN_SH_CLUSTER_TYPE:-development}
 
 if ! solana address; then
   echo Generating default keypair
@@ -61,4 +61,4 @@ solana-genesis \
     "$validator_vote_account" \
     "$validator_stake_account" \
   --ledger "$ledgerDir" \
-  --cluster-type "$igloo_RUN_SH_CLUSTER_TYPE"
+  --cluster-type "$INFINIZVM_RUN_SH_CLUSTER_TYPE"

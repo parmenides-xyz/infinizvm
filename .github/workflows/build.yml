@@ -30,7 +30,7 @@ on:
 
 jobs:
   Build:
-    runs-on: soon-runtime-spot
+    runs-on: ubuntu-latest
     permissions:
       id-token: write # This is required for requesting the JWT
       contents: read # This is required for actions/checkout
@@ -38,7 +38,7 @@ jobs:
     strategy:
       matrix:
         node:
-          - igloo
+          - infinizvm
     if: always() && (github.event_name == 'workflow_dispatch' || github.ref == 'tag')
     steps:
       - name: Check Env
@@ -48,7 +48,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          path: soon
+          path: infinizvm
         if: (github.event_name == 'workflow_dispatch' && (matrix.node == github.event.inputs.node || github.event.inputs.node == 'all')) || github.ref_type == 'tag'
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2

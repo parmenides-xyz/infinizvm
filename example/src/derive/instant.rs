@@ -1,4 +1,4 @@
-use igloo_interface::derive::InstantDerive;
+use infinizvm_interface::derive::InstantDerive;
 use tokio::sync::mpsc::{error::TryRecvError, Receiver};
 
 use crate::l1::{attribute::PayloadAttributeImpl, block::L1BlockInfoImpl};

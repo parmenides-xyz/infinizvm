@@ -1,7 +1,7 @@
 use std::path::Path;
 
 use anyhow::Result;
-use igloo_interface::{
+use infinizvm_interface::{
     derive::{DaDerive, InstantDerive},
     l1::{Epoch, L1BlockInfo, L1Head},
     l2::{EngineApi, L2Head},

@@ -1,5 +1,5 @@
 [package]
-name = "igloo-storage"
+name = "infinizvm-storage"
 version.workspace = true
 authors.workspace = true
 repository.workspace = true

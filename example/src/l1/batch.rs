@@ -1,4 +1,4 @@
-use igloo_interface::l1::BatchInfo;
+use infinizvm_interface::l1::BatchInfo;
 
 use super::L1Hash;
 

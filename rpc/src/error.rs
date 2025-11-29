@@ -8,5 +8,5 @@ pub enum Error {
     InitJsonRpc(String),
 
     #[error(transparent)]
-    IglooStorage(#[from] igloo_storage::Error),
+    InfinizvmStorage(#[from] infinizvm_storage::Error),
 }

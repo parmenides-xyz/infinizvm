@@ -1,4 +1,4 @@
-use igloo_interface::l2::executor::Config;
+use infinizvm_interface::l2::executor::Config;
 use solana_sdk::clock::Slot;
 
 mod wrapper;

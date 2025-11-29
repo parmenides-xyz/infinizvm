@@ -3,7 +3,7 @@ use std::{
     sync::{Arc, RwLock},
 };
 
-use igloo_interface::l2::{
+use infinizvm_interface::l2::{
     bank::{BankInfo, BankOperations},
     executor::Init,
 };

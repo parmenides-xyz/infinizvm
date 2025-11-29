@@ -11,10 +11,10 @@ pub enum Error {
     FetchStreamBatchError(String),
 
     #[error(transparent)]
-    StorageError(#[from] igloo_storage::Error),
+    StorageError(#[from] infinizvm_storage::Error),
 
     #[error(transparent)]
-    ValidatorError(#[from] igloo_verifier::Error),
+    ValidatorError(#[from] infinizvm_verifier::Error),
 
     #[error("Storage query error: {0}")]
     StorageQueryError(String),

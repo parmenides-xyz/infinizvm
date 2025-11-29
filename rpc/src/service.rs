@@ -2,7 +2,7 @@ use crate::jsonrpc::core::JsonRpcConfig;
 use crate::jsonrpc::service::JsonRpcService;
 use crate::Result;
 use crossbeam_channel::{Receiver, Sender};
-use igloo_storage::RollupStorage;
+use infinizvm_storage::RollupStorage;
 use solana_ledger::blockstore::Blockstore;
 use solana_runtime::bank_forks::BankForks;
 use solana_runtime::prioritization_fee_cache::PrioritizationFeeCache;
@@ -114,7 +114,7 @@ impl RpcService {
 mod tests {
     use super::*;
     use anyhow::Result;
-    use igloo_storage::config::GlobalConfig;
+    use infinizvm_storage::config::GlobalConfig;
     use solana_client::rpc_client::RpcClient;
 
     fn new_rpc_service(storage: &mut RollupStorage, rpc_config: RpcConfig) -> Result<RpcService> {

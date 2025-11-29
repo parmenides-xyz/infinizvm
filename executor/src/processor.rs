@@ -1,6 +1,6 @@
 use crate::Result;
-use igloo_verifier::settings::Settings;
-use igloo_verifier::BankVerifier;
+use infinizvm_verifier::settings::Settings;
+use infinizvm_verifier::BankVerifier;
 use solana_runtime::bank::Bank;
 use solana_sdk::transaction::SanitizedTransaction;
 use solana_svm::transaction_processor::{

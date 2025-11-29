@@ -1,5 +1,5 @@
 use crate::l2::{stream::SharedStream, tx::L2Transaction};
-use igloo_interface::l2::stream::TransactionStream;
+use infinizvm_interface::l2::stream::TransactionStream;
 use solana_sdk::{signature::Keypair, signer::Signer};
 
 pub struct TxServer {

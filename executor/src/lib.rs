@@ -1,10 +1,10 @@
 use crate::processor::TransactionProcessor;
 use async_trait::async_trait;
-use igloo_storage::execution::TransactionsResultWrapper;
-use igloo_storage::{
+use infinizvm_storage::execution::TransactionsResultWrapper;
+use infinizvm_storage::{
     blockstore::txs::CommitBatch, config::GlobalConfig, ledger::SlotInfo, RollupStorage,
 };
-use igloo_verifier::{
+use infinizvm_verifier::{
     settings::{Settings, Switchs},
     BankVerifier,
 };

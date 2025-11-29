@@ -1,5 +1,5 @@
 use anyhow::Result;
-use igloo_storage::{
+use infinizvm_storage::{
     config::GlobalConfig,
     init::default::{DEFAULT_MINT_LAMPORTS, DEFAULT_VALIDATOR_LAMPORTS},
 };
@@ -116,7 +116,7 @@ async fn commit_empty_block_should_fail() -> Result<()> {
     let result = engine.new_block(block_payload).await;
     assert!(matches!(
         result,
-        Err(Error::StorageError(igloo_storage::Error::NoEntries))
+        Err(Error::StorageError(infinizvm_storage::Error::NoEntries))
     ));
 
     Ok(())

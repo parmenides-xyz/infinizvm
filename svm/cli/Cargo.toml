@@ -11,7 +11,7 @@ edition.workspace = true
 
 [dependencies]
 svm-executor = { workspace = true }
-igloo-interface = { workspace = true }
+infinizvm-interface = { workspace = true }
 
 solana-sdk = { workspace = true }
 solana-svm = { workspace = true }

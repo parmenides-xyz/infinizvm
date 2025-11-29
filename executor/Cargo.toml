@@ -1,5 +1,5 @@
 [package]
-name = "igloo-executor"
+name = "infinizvm-executor"
 version.workspace = true
 authors.workspace = true
 repository.workspace = true
@@ -8,8 +8,8 @@ license.workspace = true
 edition.workspace = true
 
 [dependencies]
-igloo-storage = { workspace = true }
-igloo-verifier = { workspace = true }
+infinizvm-storage = { workspace = true }
+infinizvm-verifier = { workspace = true }
 tempfile = { workspace = true }
 
 thiserror = { workspace = true }

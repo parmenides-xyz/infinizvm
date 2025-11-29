@@ -1,5 +1,5 @@
 [package]
-name = "igloo-scheduler"
+name = "infinizvm-scheduler"
 version.workspace = true
 authors.workspace = true
 repository.workspace = true
@@ -28,9 +28,9 @@ arrayvec = { workspace = true }
 min-max-heap = { workspace = true }
 tempfile = { workspace = true }
 
-igloo-executor = { workspace = true }
-igloo-storage = { workspace = true }
-igloo-verifier = { workspace = true }
+infinizvm-executor = { workspace = true }
+infinizvm-storage = { workspace = true }
+infinizvm-verifier = { workspace = true }
 
 [dev-dependencies]
 assert_matches = { workspace = true }

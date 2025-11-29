@@ -33,7 +33,7 @@ solana-program = { workspace = true }
 solana-measure = { workspace = true }
 solana-rayon-threadlimit = { workspace = true }
 solana-stake-program = { workspace = true }
-igloo-storage = { workspace = true }
+infinizvm-storage = { workspace = true }
 soketto = { workspace = true }
 spl-token = { workspace = true }
 spl-token-2022 = { workspace = true }

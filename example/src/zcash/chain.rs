@@ -3,12 +3,12 @@ use chrono::Utc;
 use solana_sdk::{signature::Keypair, signer::Signer};
 use tokio::sync::mpsc::Sender;
 
-pub struct MockLayer1 {
+pub struct MockZcash {
     sender: Sender<L1BlockInfoImpl>,
     start_height: u64,
 }
 
-impl MockLayer1 {
+impl MockZcash {
     pub fn new(start_height: u64, sender: Sender<L1BlockInfoImpl>) -> Self {
         Self {
             sender,

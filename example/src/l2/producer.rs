@@ -1,5 +1,5 @@
 use anyhow::{Ok, Result};
-use igloo_interface::{
+use infinizvm_interface::{
     l1::PayloadAttribute,
     l2::{executor::Init, Entry, Producer},
 };

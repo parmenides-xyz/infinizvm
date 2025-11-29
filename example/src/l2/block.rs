@@ -1,4 +1,4 @@
-use igloo_interface::l2::{Block, BlockPayload, Entry};
+use infinizvm_interface::l2::{Block, BlockPayload, Entry};
 use solana_sdk::transaction::VersionedTransaction;
 
 use super::head::L2HeadImpl;
